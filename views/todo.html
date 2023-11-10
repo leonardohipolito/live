@@ -1,0 +1,11 @@
+<div class="space-y-6">
+	<ul class="space-y-4">
+		{% foreach($todos as $todo): %}
+		<li class="w-full bg-purple-500 text-white rounded shadow px-4 py-2">
+			{{$todo}}
+		</li>
+		{% endforeach; %}
+	</ul>
+	<input type="text" live:model="draft" class="w-full border-gray-800 rounded text-gray-900" placeholder="Adicionar Item"/>
+	<button live:click="add" class="bg-lime-500 shadow px-4 py-2 text-white rounded text-center w-full">Add</button>
+</div>
