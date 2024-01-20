@@ -48,6 +48,15 @@ class Live
 	public function render(string $template, array $data = [])
 	{
 		$live = fn ($class) => $this->initialComponentRender($class);
+		$component = function (string $path, array $data) {
+			$path = "views/components/$path.html";
+			extract($data, EXTR_SKIP);
+			$code = $this->includeViews($path);
+			$code =  $this->compileView($code);
+			ob_start();
+			eval('?>' . $code);
+			return ob_get_clean();
+		};
 		extract($data, EXTR_SKIP);
 		$code = $this->includeViews($template);
 		$code = $this->compileView($code);
@@ -200,10 +209,10 @@ class Live
 		$data = json_decode(file_get_contents('php://input'), true);
 		$snapshot = $data['snapshot'];
 		$component = $this->fromSnapshot($snapshot);
-		if ($method = $data['callMethod']) {
+		if (isset($data['callMethod']) && $method = $data['callMethod']) {
 			$this->callComponentMethod($component, $method);
 		}
-		if ([$property, $value] = $data['updateProperty'] ?: false) {
+		if (isset($data['updateProperty']) && [$property, $value] = $data['updateProperty'] ?: false) {
 			$this->updateComponentProperty($component, $property, $value);
 		}
 		[$html, $snapshot] = $this->toSnapshot($component);
