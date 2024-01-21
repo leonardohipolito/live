@@ -13,26 +13,43 @@
 
 </head>
 
-<body class="bg-gray-900">
-	<div class="relative isolate pt-14">
-		<div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-			<div
-				class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-				style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-			</div>
-		</div>
-		<div class="py-24 sm:py-32 lg:pb-40">
-			<div class="container mx-auto max-w-sm text-white">
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, et corporis alias earum, odio voluptatum id
-				sapiente
-				non, praesentium dicta veniam provident quos deleniti beatae quam cumque ea est inventore?
-				<h1>Tarefas</h1>
-				{{$teste}}
-				{{$component('input',['placeholder'=>'Digite uma tarefa'])}}
+<body class="bg-gray-900 flex justify-center items-center min-h-screen">
+	<div class="grid grid-cols-3 bg-white rounded w-3/6" x-data="{tab:1}">
+		<nav class="bg-gray-100 rounded-l flex flex-1 flex-col px-2" aria-label="Sidebar">
+			<ul role="list" class="-mx-2 space-y-1">
+				<li>
+					<!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
+					<a href="#"
+						class="bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Dashboard</a>
+				</li>
+				<li>
+					<a href="#"
+						class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Team</a>
+				</li>
+				<li>
+					<a href="#"
+						class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Projects</a>
+				</li>
+				<li>
+					<a href="#"
+						class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Calendar</a>
+				</li>
+				<li>
+					<a href="#"
+						class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Documents</a>
+				</li>
+				<li>
+					<a href="#"
+						class="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex gap-x-3 rounded-md p-2 pl-3 text-sm leading-6 font-semibold">Reports</a>
+				</li>
+			</ul>
 
-				{{$live('\App\Todo')}}
-			</div>
-		</div>
+		</nav>
+		<section class="col-span-2">
+			<article>
+				{{$component('pesquisa-simples',['name'=>'bancos','label'=>'Bancos / Empresas'])}}
+			</article>
+		</section>
 	</div>
 </body>
 <script>

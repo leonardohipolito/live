@@ -1,0 +1,16 @@
+<div x-data="{
+	endpoint:'{{$endpoint}}',
+	options:[],
+	filter:'',
+	selected:[]
+}">
+	{% if(isset($label)): %}
+	<label for="{{$name}}">{{$label}}</label>
+	{% endif %}
+	<select multiple name="{{$name}}" id="{{$name}}">
+		<template x-for="option in options">
+			<option x-bind:value="option.CODIGO" x-text="option.NOME"></option>
+		</template>
+	</select>
+	
+</div>
